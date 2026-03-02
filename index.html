@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trade Matrix | Mathematics Club</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b0f17;
+  color: #f3f4f6;
+  line-height: 1.6;
+}
+
+/* ===== TICKER ===== */
+.ticker-wrapper {
+  background: #000;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 40px;
+  padding: 8px 0;
+  white-space: nowrap;
+  animation: scrollTicker 20s linear infinite;
+  font-size: 14px;
+}
+
+@keyframes scrollTicker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  backdrop-filter: blur(10px);
+  background: rgba(17, 24, 39, 0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 42px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.brand-text {
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.nav-right a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #f3f4f6;
+  transition: 0.3s;
+}
+
+.nav-right a:hover {
+  color: #16c784;
+}
+
+.btn-primary {
+  background: #16c784;
+  padding: 8px 18px;
+  border-radius: 6px;
+  color: #000 !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  border: 1px solid #16c784;
+  padding: 8px 18px;
+  border-radius: 6px;
+  color: #16c784;
+  text-decoration: none;
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 5%;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+  z-index: 2;
+}
+
+.hero-left h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+}
+
+.hero-right {
+  flex: 1;
+  min-width: 300px;
+  z-index: 2;
+}
+
+canvas {
+  width: 100%;
+  height: 400px;
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown {
+  display: flex;
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.time-box {
+  background: rgba(255,255,255,0.05);
+  padding: 15px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+}
+
+.time-box span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #16c784;
+}
+
+/* ===== SNAPSHOT ===== */
+.snapshot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 80px 5%;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+  padding: 35px;
+  border-radius: 16px;
+  width: 260px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+/* ===== MOBILE ===== */
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero { flex-direction: column; }
+  canvas { height: 250px; }
+  .nav-right { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker-wrapper">
+  <div class="ticker-track" id="tickerTrack">
+    <span>TMX +2.4%</span>
+    <span>BULL +1.8%</span>
+    <span>BEAR -0.9%</span>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img 
+      src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/main/tradematrix.png"
+      class="logo"
+      alt="Trade Matrix Logo"
+    >
+    <span class="brand-text">TRADE MATRIX</span>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>TRADE MATRIX</h1>
+    <p>Virtual Share Market Competition</p>
+
+    <div class="countdown" id="countdownBox">
+      <div class="time-box">
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+      <div class="time-box">
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <small>Min</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <canvas id="tradeChart"></canvas>
+  </div>
+</section>
+
+<script>
+
+/* ===== COUNTDOWN (21 March 2026, 12:00 PM) ===== */
+const eventDate = new Date("2026-03-21T12:00:00").getTime();
+
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minutesEl = document.getElementById("minutes");
+const countdownBox = document.getElementById("countdownBox");
+
+setInterval(() => {
+  const now = new Date().getTime();
+  let distance = eventDate - now;
+
+  if (distance <= 0) {
+    countdownBox.innerHTML =
+      "<h2 style='color:#16c784'>Event Live Now</h2>";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+  daysEl.innerText = days;
+  hoursEl.innerText = hours;
+  minutesEl.innerText = minutes;
+}, 1000);
+
+/* ===== TRADING CHART ===== */
+const canvas = document.getElementById("tradeChart");
+const ctx = canvas.getContext("2d");
+
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
+
+let prices = [200];
+let maxPoints = 50;
+
+function generateNextPrice() {
+  let last = prices[prices.length - 1];
+  let change = (Math.random() - 0.5) * 10;
+  return last + change;
+}
+
+function updateChart() {
+  if (prices.length > maxPoints) prices.shift();
+  prices.push(generateNextPrice());
+  drawChart();
+}
+
+function drawChart() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height - prices[0]);
+
+  for (let i = 1; i < prices.length - 2; i++) {
+    let xc = (i + 1) * 10;
+    let yc = canvas.height - prices[i];
+    ctx.quadraticCurveTo(i * 10, canvas.height - prices[i], xc, yc);
+  }
+
+  ctx.strokeStyle =
+    prices[prices.length - 1] > prices[prices.length - 2]
+      ? "#16c784"
+      : "#ea3943";
+
+  ctx.lineWidth = 2;
+  ctx.shadowColor = ctx.strokeStyle;
+  ctx.shadowBlur = 15;
+  ctx.stroke();
+}
+
+setInterval(updateChart, 1000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Trade Matrix</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/register.css">
+
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+    <section class="register-hero">
+
+        <h1>Trade Matrix Registration</h1>
+        <p>Select your category and register your team.</p>
+
+    </section>
+
+
+
+    <section class="register-section">
+
+        <div class="register-container">
+
+            <form id="registerForm">
+
+                <!-- PARTICIPANT TYPE -->
+
+                <label>Participant Type</label>
+
+                <select id="participantType" required>
+
+                    <option value="">Select</option>
+                    <option value="mits">MITS Student</option>
+                    <option value="nonmits">Non MITS Student</option>
+
+                </select>
+
+
+                <!-- TEAM NAME -->
+
+                <input type="text" placeholder="Team Name" required>
+
+
+
+                <!-- TEAM SIZE -->
+
+                <label>Team Size</label>
+
+                <select id="teamSize" required>
+
+                    <option value="">Select</option>
+                    <option value="duo">Duo (₹189)</option>
+                    <option value="squad">Squad (₹349)</option>
+
+                </select>
+
+
+
+                <h2>Team Leader</h2>
+
+                <input type="text" placeholder="Leader Name" required>
+
+                <input type="email" placeholder="Leader Email" required>
+
+                <input type="tel" placeholder="Leader Phone" required>
+
+
+                <!-- MITS LEADER FIELDS -->
+                <div id="leaderMitsFields" style="display:none;">
+
+                    <input type="text" placeholder="Leader Branch">
+
+                    <input type="text" placeholder="Leader Enrollment Number">
+
+                </div>
+
+
+                <!-- NON MITS LEADER FIELD -->
+                <div id="leaderNonMitsFields" style="display:none;">
+
+                    <input type="text" placeholder="Leader College">
+
+                </div>
+
+
+                <h2>Team Members</h2>
+
+                <div id="membersContainer"></div>
+
+
+
+                <button type="submit">Register Team</button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <div id="footer"></div>
+
+    <script src="js/components.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

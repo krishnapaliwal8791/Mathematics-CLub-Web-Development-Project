@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trade Matrix | Mathematics Club</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/events.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+
+/* container width control */
+.events-hero-container,
+.events-container{
+max-width:1100px;
+margin:auto;
+padding:0 20px;
+}
+
+/* make images and elements flexible */
+img{
+max-width:100%;
+height:auto;
+}
+
+/* timeline layout */
+.timeline{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+/* tablet responsiveness */
+@media (max-width:992px){
+
+.events-hero h1{
+font-size:36px;
+}
+
+.events-hero p{
+font-size:16px;
+}
+
+.events-container h2{
+font-size:26px;
+}
+
+.timeline{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* mobile responsiveness */
+@media (max-width:600px){
+
+.events-hero{
+padding:80px 20px;
+text-align:center;
+}
+
+.events-hero h1{
+font-size:28px;
+}
+
+.events-hero p{
+font-size:15px;
+}
+
+.events-section,
+.events-section-dark{
+padding:60px 20px;
+}
+
+.events-container h2{
+font-size:22px;
+}
+
+.events-container p{
+font-size:15px;
+}
+
+.timeline{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+.timeline-step{
+padding:18px;
+}
+
+.events-btn{
+display:block;
+width:100%;
+text-align:center;
+}
+
+}
+
+</style>
+
+
+<body>
+
+    <div id="navbar"></div>
+
+    <!-- HERO -->
+
+    <section class="events-hero">
+
+        <div class="events-hero-container">
+
+            <h1>Trade Matrix</h1>
+
+            <p>
+                A virtual trading competition where logic meets real market strategy.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- OVERVIEW -->
+
+    <section class="events-section">
+
+        <div class="events-container">
+
+            <h2>Event Overview</h2>
+
+            <p>
+                Trade Matrix is a simulation-based trading competition designed
+                to test participants' analytical thinking, risk management,
+                and decision-making skills in a virtual market environment.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FORMAT -->
+
+    <section class="events-section-dark">
+
+        <div class="events-container">
+
+            <h2>Format & Structure</h2>
+
+            <ul>
+                <li>Virtual trading simulation platform</li>
+                <li>Live market fluctuations</li>
+                <li>Team-based competition (4 members per team)</li>
+                <li>Strategy, timing, and analytics driven scoring</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- EVENT FLOW -->
+
+    <section class="events-section">
+
+        <div class="events-container">
+
+            <h2 class="timeline-title">How Trade Matrix Works</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-step">
+                    <div class="timeline-number">1</div>
+                    <h3>Registration</h3>
+                    <p>Teams register for the competition and confirm participation.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-number">2</div>
+                    <h3>Trading Round</h3>
+                    <p>Participants trade in a simulated market environment.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-number">3</div>
+                    <h3>Portfolio Evaluation</h3>
+                    <p>Team performance is measured based on portfolio value.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="timeline-number">4</div>
+                    <h3>Winner Announcement</h3>
+                    <p>Top performing teams receive prizes and recognition.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RULES -->
+
+    <section class="events-section">
+
+        <div class="events-container">
+
+            <h2>Rules & Guidelines</h2>
+
+            <ul>
+
+                <li>Each team starts with equal virtual capital</li>
+                <li>No external financial assistance allowed</li>
+                <li>Market decisions must be team consensus</li>
+                <li>Final rankings based on portfolio value</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ELIGIBILITY -->
+
+    <section class="events-section-dark">
+
+        <div class="events-container">
+
+            <h2>Eligibility</h2>
+
+            <ul>
+
+                <li>Open to all MITS DU students</li>
+                <li>Team size: 4 members</li>
+                <li>Registration mandatory</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PRIZES -->
+
+    <section class="events-section">
+
+        <div class="events-container">
+
+            <h2>Prize Pool</h2>
+
+            <p class="prize-highlight">Trophies and exciting goodies for winners</p>
+
+           
+
+            <a href="register.html" class="events-btn">
+                Register Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <div id="footer"></div>
+
+    <script src="js/components.js"></script>
+
+</body>
+
+</html>

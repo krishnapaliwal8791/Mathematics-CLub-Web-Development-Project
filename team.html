@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Team | Mathematics Club</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/team.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+    /* container width */
+
+    .team-hero-container,
+    .team-container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    /* grid layout */
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    /* single card sections */
+
+    .team-grid.single {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: auto;
+    }
+
+    /* card */
+
+    .team-card {
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* image */
+
+    .team-image img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    /* ================= TABLET ================= */
+
+    @media (max-width:992px) {
+
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .team-hero h1 {
+            font-size: 36px;
+        }
+
+        .team-hero p {
+            font-size: 16px;
+        }
+
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width:600px) {
+
+        .team-grid {
+            grid-template-columns: 1fr;
+            display: block;
+        }
+
+        .team-card {
+            max-width: 320px;
+            margin-top: 5%;
+        }
+
+        .team-image img {
+            width: 110px;
+            height: 110px;
+        }
+
+        .team-hero {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .team-hero h1 {
+            font-size: 28px;
+        }
+
+        .team-hero p {
+            font-size: 15px;
+        }
+
+    }
+</style>
+
+<body>
+
+    <div id="navbar"></div>
+
+    <!-- HERO -->
+
+    <section class="team-hero">
+
+        <div class="team-hero-container">
+
+            <h1>Our Team</h1>
+
+            <p>
+                The people driving innovation, leadership, and excellence
+                at Mathematics Club, MITS DU.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FACULTY -->
+
+    <section class="team-section">
+
+        <div class="team-container">
+
+            <h2 class="section-title">Faculty Coordinator</h2>
+
+            <div class="team-grid single">
+
+                <div class="team-card">
+
+                    <div class="team-image">
+                        <img
+                            src="https://media.licdn.com/dms/image/v2/D4D03AQETAQqckJxU4A/profile-displayphoto-scale_400_400/B4DZtZhab2IAAk-/0/1766733524282?e=1773878400&v=beta&t=PBHc8R07-byzf-RXR4DGiphj_Naror3kwAG5uPWy41Y">
+                    </div>
+
+                    <h3>Dr. Vijay S. Sharma</h3>
+                    <p class="team-role">Faculty Coordinator</p>
+
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CORE TEAM -->
+
+    <section class="team-section-dark">
+
+        <div class="team-container">
+
+            <h2 class="section-title">Core Team</h2>
+
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/kratika.jpg">
+                    </div>
+                    <h3>Kratika Samadhiya</h3>
+                    <p class="team-role">President</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/arpit.jpg">
+                    </div>
+                    <h3>Arpit Agrawal</h3>
+                    <p class="team-role">Secretary</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/karishma.jpg">
+                    </div>
+                    <h3>Karishma Kushwaha</h3>
+                    <p class="team-role">Management Head</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/krishna.jpg">
+                    </div>
+                    <h3>Krishna Jha</h3>
+                    <p class="team-role">Technical Head</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/aaditya.jpg">
+                    </div>
+                    <h3>Aaditya Pal</h3>
+                    <p class="team-role">Video Editing Head</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/harshita.jpg">
+                    </div>
+                    <h3>Harshita Sharma</h3>
+                    <p class="team-role">Marketing Head</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://your-image-link/jaydeep.jpg">
+                    </div>
+                    <h3>Jaydeep Singh Baghel</h3>
+                    <p class="team-role">Content Head</p>
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- EVENT LEAD -->
+
+    <section class="team-section">
+
+        <div class="team-container">
+
+            <h2 class="section-title">Event Leadership</h2>
+
+            <div class="team-grid single">
+
+                <div class="team-card">
+
+                    <div class="team-image">
+                        <img src="https://your-image-link/aum.jpg">
+                    </div>
+
+                    <h3>Aum Mehta</h3>
+                    <p class="team-role">Event Manager – Trade Matrix</p>
+
+                    <div class="team-links">
+                        <a href="#">LinkedIn</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <div id="footer"></div>
+
+    <script src="js/components.js"></script>
+
+</body>
+
+</html>

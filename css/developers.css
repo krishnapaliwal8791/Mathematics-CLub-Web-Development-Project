@@ -1,0 +1,144 @@
+.dev-hero {
+  padding: 120px 20px 80px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 20%, #0f172a 0%, #050814 80%);
+}
+
+.dev-hero h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #00ff88, #00c2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dev-hero p {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Sections */
+
+.dev-section {
+  padding: 120px 20px;
+  background: #050814;
+}
+
+.dev-section-dark {
+  padding: 120px 20px;
+  background: #0b1220;
+}
+
+.dev-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.dev-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 60px;
+  background: linear-gradient(90deg, #00ff88, #00c2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card */
+
+.dev-card {
+  background: rgba(255,255,255,0.03);
+  padding: 50px;
+  border-radius: 24px;
+  border: 1px solid rgba(0,255,136,0.1);
+  backdrop-filter: blur(20px);
+  transition: 0.4s ease;
+}
+
+.dev-card.highlight {
+  border: 1px solid rgba(0,255,136,0.4);
+  box-shadow: 0 0 50px rgba(0,255,136,0.15);
+}
+
+.dev-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 50px rgba(0,255,136,0.25);
+}
+
+.dev-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.dev-image img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(0,255,136,0.4);
+}
+
+.dev-card h3 {
+  font-size: 1.5rem;
+  color: #16c784;
+  margin-bottom: 6px;
+}
+
+.dev-role {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+
+.dev-description {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Stack */
+
+.dev-stack {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.dev-stack span {
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #00ff88;
+}
+
+/* Links */
+
+.dev-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dev-links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #00ff88;
+  transition: 0.3s ease;
+}
+
+.dev-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .dev-card {
+    padding: 35px;
+  }
+}

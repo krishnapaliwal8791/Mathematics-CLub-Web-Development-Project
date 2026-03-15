@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Mathematics Club</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/developers.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        .slider-wrapper {
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        @media(max-width:992px) {
+            .gallery-slide img {
+                height: 300px;
+            }
+        }
+
+        @media(max-width:576px) {
+            .gallery-slide img {
+                height: 250px;
+            }
+        }
+
+        .container-head {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.3);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: #00ff88;
+            transform: scale(1.2);
+        }
+
+        .event-card {
+            max-width: 700px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+    <section class="dev-hero">
+        <div class="dev-hero-container">
+            <h1>Moments in Focus</h1>
+            <p>A glimpse into our club’s vibrant moments.</p>
+        </div>
+    </section>
+
+
+    <!-- ===== EVENT 1 ===== -->
+
+    <div class="container-head">
+        <h3>Number Ninja</h3>
+        <p class="event-desc text-center mb-4">
+            This event aims to provide a fun and competitive platform for students to explore mathematics while
+            fostering teamwork and logical reasoning.
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="card event-card p-4">
+
+            <div class="slider-wrapper">
+                <div class="slider-track" id="slider1">
+
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032294.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032306.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032307.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032313.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032316.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032317.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032321.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032325.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032326.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032383.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032388.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032393.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032396.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032399.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032413.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/1000032415.jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/IMG_20251014_121928%20(1).jpg">
+                    </div>
+                    <div class="gallery-slide"><img
+                            src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Number_Ninjas/IMG_20251014_122326.jpg">
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="dots-container" id="dots1"></div>
+
+        </div>
+    </div>
+
+
+    <!-- ===== EVENT 2 (FIXED SAME STRUCTURE) ===== -->
+
+    <section class="dev-section-dark">
+
+        <div class="container-head">
+            <h3>Aarunya Stall</h3>
+        </div>
+
+        <div class="container"> <!-- ⭐ IMPORTANT SAME CONTAINER -->
+            <div class="card event-card p-4">
+
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="slider2">
+
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/1.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/10.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/11.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/12.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/2.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/3.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/4.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/5.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/6.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/7.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/8.jpeg"></div>
+                        <div class="gallery-slide"><img src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/refs/heads/main/Aarunya_Stall/9.jpeg"></div>
+
+
+                    </div>
+                </div>
+
+                <div class="dots-container" id="dots2"></div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="js/components.js"></script>
+
+    <script>
+
+        function setupSlider(sliderId, dotsId, intervalTime = 2500) {
+
+            const track = document.getElementById(sliderId);
+            const dotsContainer = document.getElementById(dotsId);
+
+            const slides = [...track.children];
+            let index = 0;
+            let interval;
+
+            slides.forEach((_, i) => {
+                const d = document.createElement("div");
+                d.classList.add("dot");
+                if (i === 0) d.classList.add("active");
+
+                d.onclick = () => {
+                    index = i;
+                    update();
+                    reset();
+                };
+
+                dotsContainer.appendChild(d);
+            });
+
+            const dots = [...dotsContainer.children];
+
+            function update() {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach(d => d.classList.remove("active"));
+                dots[index].classList.add("active");
+            }
+
+            function next() {
+                index = (index + 1) % slides.length;
+                update();
+            }
+
+            function start() {
+                interval = setInterval(next, intervalTime);
+            }
+
+            function reset() {
+                clearInterval(interval);
+                start();
+            }
+
+            start();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setupSlider("slider1", "dots1", 2500);
+            setTimeout(() => {
+                setupSlider("slider2", "dots2", 2500);
+            }, 400);
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+.about-hero{
+padding:120px 20px 80px;
+text-align:center;
+background:radial-gradient(circle at 50% 30%,#111827 0%,#0B0F1A 70%);
+}
+
+.about-hero h1{
+font-size:3rem;
+font-weight:800;
+margin-bottom:20px;
+background:linear-gradient(90deg,#00ff88,#00c2ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.about-hero p{
+max-width:700px;
+margin:auto;
+color:rgba(255,255,255,0.7);
+}
+
+.about-section{
+padding:100px 20px;
+background:#0B0F1A;
+}
+
+.about-section-dark{
+padding:100px 20px;
+background:#0e1624;
+}
+
+.about-container{
+max-width:1100px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:60px;
+}
+
+.about-block h2{
+color:#16c784;
+margin-bottom:15px;
+}
+
+.about-block p,
+.about-block ul{
+color:rgba(255,255,255,0.7);
+line-height:1.7;
+}
+
+.about-block ul{
+padding-left:20px;
+}
+
+.section-title{
+font-size:2rem;
+font-weight:800;
+margin-bottom:40px;
+background:linear-gradient(90deg,#00ff88,#00c2ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.events-grid,
+.leadership-grid,
+.stats-container{
+display:flex;
+gap:30px;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+.event-card,
+.engagement-card,
+.stat-card,
+.leader-card{
+flex:1;
+background:rgba(255,255,255,0.04);
+padding:30px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
+transition:0.3s ease;
+}
+
+.event-card h3,
+.engagement-card h3,
+.stat-card h3{
+color:#16c784;
+margin-bottom:15px;
+}
+
+.event-card p,
+.engagement-card p,
+.stat-card p,
+.leader-card p{
+color:rgba(255,255,255,0.7);
+}
+
+.stat-card h3{
+font-size:2rem;
+}
+
+.leader-card h4{
+color:rgba(255,255,255,0.6);
+margin-bottom:10px;
+}
+
+.event-card:hover,
+.engagement-card:hover,
+.stat-card:hover,
+.leader-card:hover{
+transform:translateY(-6px);
+border-color:rgba(0,255,136,0.4);
+box-shadow:0 15px 40px rgba(0,255,136,0.15);
+}
+
+@media (max-width:768px){
+
+.events-grid,
+.leadership-grid,
+.stats-container{
+flex-direction:column;
+}
+
+}

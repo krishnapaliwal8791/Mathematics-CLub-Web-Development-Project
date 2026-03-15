@@ -1,333 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Trade Matrix | Mathematics Club</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>Mathematics Club | MITS DU</title>
 
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0b0f17;
-  color: #f3f4f6;
-  line-height: 1.6;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-/* ===== TICKER ===== */
-.ticker-wrapper {
-  background: #000;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
+    <style>
+        /* ===== Base Layout Fixes ===== */
 
-.ticker-track {
-  display: flex;
-  gap: 40px;
-  padding: 8px 0;
-  white-space: nowrap;
-  animation: scrollTicker 20s linear infinite;
-  font-size: 14px;
-}
+        .hero-split {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
 
-@keyframes scrollTicker {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
+        .hero-left {
+            flex: 1;
+            min-width: 300px;
+        }
 
-/* ===== NAVBAR ===== */
-.navbar {
-  backdrop-filter: blur(10px);
-  background: rgba(17, 24, 39, 0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+        .hero-right {
+            flex: 1;
+            min-width: 300px;
+        }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-}
+        #candlestick {
+            width: 100%;
+            height: 420px;
+        }
 
-.logo {
-  height: 42px;
-  transition: transform 0.3s ease;
-}
+        /* Event Meta */
+        .event-meta {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
 
-.logo:hover {
-  transform: scale(1.05);
-}
+        /* Countdown */
+        .countdown {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-.brand-text {
-  font-weight: 700;
-  margin-left: 10px;
-}
+        /* Why Section */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
 
-.nav-right a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #f3f4f6;
-  transition: 0.3s;
-}
+        /* Contact Section */
+        .contact-card {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
 
-.nav-right a:hover {
-  color: #16c784;
-}
+        /* =========================
+TABLET
+========================= */
 
-.btn-primary {
-  background: #16c784;
-  padding: 8px 18px;
-  border-radius: 6px;
-  color: #000 !important;
-  font-weight: 600;
-  text-decoration: none;
-}
+        @media (max-width:1024px) {
 
-.btn-secondary {
-  border: 1px solid #16c784;
-  padding: 8px 18px;
-  border-radius: 6px;
-  color: #16c784;
-  text-decoration: none;
-}
+            .hero-split {
+                flex-direction: column;
+                text-align: center;
+            }
 
-/* ===== HERO ===== */
-.hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 5%;
-  position: relative;
-}
+            .hero-right {
+                width: 100%;
+            }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
+            #candlestick {
+                height: 350px;
+            }
 
-.hero-left {
-  flex: 1;
-  min-width: 300px;
-  z-index: 2;
-}
+            .event-meta {
+                justify-content: center;
+            }
 
-.hero-left h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-}
+            .countdown {
+                justify-content: center;
+            }
 
-.hero-right {
-  flex: 1;
-  min-width: 300px;
-  z-index: 2;
-}
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-canvas {
-  width: 100%;
-  height: 400px;
-}
+            .contact-card {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-/* ===== COUNTDOWN ===== */
-.countdown {
-  display: flex;
-  gap: 20px;
-  margin: 25px 0;
-}
+        }
 
-.time-box {
-  background: rgba(255,255,255,0.05);
-  padding: 15px 20px;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.05);
-  text-align: center;
-}
+        /* =========================
+MOBILE
+========================= */
 
-.time-box span {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #16c784;
-}
+        @media (max-width:768px) {
 
-/* ===== SNAPSHOT ===== */
-.snapshot {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  padding: 80px 5%;
-}
+            .hero {
+                padding: 80px 20px;
+            }
 
-.card {
-  background: rgba(255,255,255,0.04);
-  padding: 35px;
-  border-radius: 16px;
-  width: 260px;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.06);
-  text-align: center;
-}
+            .hero-title {
+                font-size: 40px;
+            }
 
-/* ===== MOBILE ===== */
-.hamburger {
-  display: none;
-}
+            .hero-description {
+                font-size: 16px;
+            }
 
-@media (max-width: 768px) {
-  .hero { flex-direction: column; }
-  canvas { height: 250px; }
-  .nav-right { display: none; }
-}
+            .hero-btn {
+                padding: 12px 28px;
+                font-size: 14px;
+            }
 
-</style>
+            .event-meta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .countdown {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .count-box {
+                padding: 10px 12px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+        }
+
+        /* =========================
+SMALL MOBILE
+========================= */
+
+        @media (max-width:480px) {
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .count-box span {
+                font-size: 20px;
+            }
+
+            .meta-value {
+                font-size: 14px;
+            }
+
+        }
+    </style>
+
 </head>
+
+
 <body>
 
-<!-- ===== TICKER ===== -->
-<div class="ticker-wrapper">
-  <div class="ticker-track" id="tickerTrack">
-    <span>TMX +2.4%</span>
-    <span>BULL +1.8%</span>
-    <span>BEAR -0.9%</span>
-  </div>
-</div>
-
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-  <div class="nav-left">
-    <img 
-      src="https://raw.githubusercontent.com/krishnapaliwal8791/mathematics-club-web-assets/main/tradematrix.png"
-      class="logo"
-      alt="Trade Matrix Logo"
-    >
-    <span class="brand-text">TRADE MATRIX</span>
-  </div>
-</nav>
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="hero-left">
-    <h1>TRADE MATRIX</h1>
-    <p>Virtual Share Market Competition</p>
-
-    <div class="countdown" id="countdownBox">
-      <div class="time-box">
-        <span id="days">00</span>
-        <small>Days</small>
-      </div>
-      <div class="time-box">
-        <span id="hours">00</span>
-        <small>Hours</small>
-      </div>
-      <div class="time-box">
-        <span id="minutes">00</span>
-        <small>Min</small>
-      </div>
+    <div class="market-ticker">
+        <div id="ticker-track"></div>
     </div>
-  </div>
 
-  <div class="hero-right">
-    <canvas id="tradeChart"></canvas>
-  </div>
-</section>
+    <div id="navbar"></div>
 
-<script>
+    <section class="hero">
 
-/* ===== COUNTDOWN (21 March 2026, 12:00 PM) ===== */
-const eventDate = new Date("2026-03-21T12:00:00").getTime();
+        <div class="grid-overlay"></div>
 
-const daysEl = document.getElementById("days");
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const countdownBox = document.getElementById("countdownBox");
+        <div class="hero-split">
 
-setInterval(() => {
-  const now = new Date().getTime();
-  let distance = eventDate - now;
+            <div class="hero-left">
 
-  if (distance <= 0) {
-    countdownBox.innerHTML =
-      "<h2 style='color:#16c784'>Event Live Now</h2>";
-    return;
-  }
+                <h1 class="hero-title">
+                    <span class="trade">TRADE</span>
+                    <span class="matrix">MATRIX</span>
+                </h1>
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+                <p class="hero-description">
+                    Where Logic Meets Markets.
+                    A Virtual Trading Competition Powered by Strategy & Mathematics.
+                </p>
 
-  daysEl.innerText = days;
-  hoursEl.innerText = hours;
-  minutesEl.innerText = minutes;
-}, 1000);
+                <a href="register.html" class="hero-btn">
+                    Register Now
+                </a>
 
-/* ===== TRADING CHART ===== */
-const canvas = document.getElementById("tradeChart");
-const ctx = canvas.getContext("2d");
+                <div class="event-meta">
 
-canvas.width = canvas.offsetWidth;
-canvas.height = canvas.offsetHeight;
+                    <div class="meta-item">
+                        <span class="meta-label">Date</span>
+                        <span class="meta-value">21 March 2026</span>
+                    </div>
 
-let prices = [200];
-let maxPoints = 50;
+                    <div class="meta-item">
+                        <span class="meta-label">Prize Pool</span>
+                        <span class="meta-value">Trophies and goodies</span>
+                    </div>
 
-function generateNextPrice() {
-  let last = prices[prices.length - 1];
-  let change = (Math.random() - 0.5) * 10;
-  return last + change;
-}
+                    <div class="meta-item">
+                        <span class="meta-label">Team Size</span>
+                        <span class="meta-value">4 Members</span>
+                    </div>
 
-function updateChart() {
-  if (prices.length > maxPoints) prices.shift();
-  prices.push(generateNextPrice());
-  drawChart();
-}
+                </div>
 
-function drawChart() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.beginPath();
-  ctx.moveTo(0, canvas.height - prices[0]);
+                <div class="countdown">
 
-  for (let i = 1; i < prices.length - 2; i++) {
-    let xc = (i + 1) * 10;
-    let yc = canvas.height - prices[i];
-    ctx.quadraticCurveTo(i * 10, canvas.height - prices[i], xc, yc);
-  }
+                    <div class="count-box">
+                        <span id="days">0</span>
+                        <p>Days</p>
+                    </div>
 
-  ctx.strokeStyle =
-    prices[prices.length - 1] > prices[prices.length - 2]
-      ? "#16c784"
-      : "#ea3943";
+                    <div class="count-box">
+                        <span id="hours">0</span>
+                        <p>Hours</p>
+                    </div>
 
-  ctx.lineWidth = 2;
-  ctx.shadowColor = ctx.strokeStyle;
-  ctx.shadowBlur = 15;
-  ctx.stroke();
-}
+                    <div class="count-box">
+                        <span id="minutes">0</span>
+                        <p>Minutes</p>
+                    </div>
 
-setInterval(updateChart, 1000);
+                    <div class="count-box">
+                        <span id="seconds">0</span>
+                        <p>Seconds</p>
+                    </div>
 
-</script>
+                </div>
+
+            </div>
+
+            <div class="hero-right">
+                <canvas id="candlestick"></canvas>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="why-section">
+
+        <div class="why-container">
+
+            <h2 class="why-title">Why Participate?</h2>
+
+            <div class="why-grid">
+
+                <div class="why-card">
+                    <h3>Real Market Simulation</h3>
+                    <p>
+                        Experience a realistic trading environment where strategy,
+                        timing, and analytics determine success.
+                    </p>
+                </div>
+
+                <div class="why-card">
+                    <h3>Strategic Team Play</h3>
+                    <p>
+                        Collaborate in teams of four, combine logic and intuition,
+                        and outperform your competitors.
+                    </p>
+                </div>
+
+                <div class="why-card">
+                    <h3>Compete & Win Trophies and exciting goodies</h3>
+                    <p>
+                        Test your decision-making skills, climb the leaderboard,
+                        and compete for the ultimate prize.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="contact-section">
+
+        <div class="contact-container">
+
+            <h2 class="contact-title">Contact & Coordination</h2>
+
+            <div class="contact-card">
+
+                <div class="contact-item">
+                    <h4>Faculty Coordinator</h4>
+                    <p>Dr. Vijay Sharma</p>
+                </div>
+
+                <div class="contact-item">
+                    <h4>Student Coordinator</h4>
+                    <p>Aakash Verma</p>
+                </div>
+
+                <div class="contact-item">
+                    <h4>Email</h4>
+                    <p>-</p>
+                </div>
+
+                <div class="contact-item">
+                    <h4>Venue</h4>
+                    <p>MITS DU</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="js/candlestick.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/ticker.js"></script>
+
+    <div id="footer"></div>
+
+    <script src="js/components.js"></script>
 
 </body>
+
 </html>

@@ -8,5 +8,5 @@ document.getElementById(id).innerHTML = data;
 
 }
 
-loadComponent("navbar","components/navbar.html");
-loadComponent("footer","components/footer.html");
+loadComponent("navbar","https://mathematics-club-mits.web.app/components/navbar.html");
+loadComponent("footer","https://mathematics-club-mits.web.app/components/footer.html");

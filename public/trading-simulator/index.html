@@ -15,6 +15,8 @@
     "sb_publishable_FwKur31N-CLqlJkEH3ocWg_jdxqnhAy"
   );
 
+  const USER_ID = "696b7fd7-aa03-4194-b731-bee754ae065b";
+
   async function loadAssets() {
     const { data } = await client.from("assets").select("*");
     render(data);
@@ -25,8 +27,46 @@
     div.innerHTML = "";
 
     data.forEach(a => {
-      div.innerHTML += `<p>${a.name} - ₹${a.price}</p>`;
+      div.innerHTML += `
+        <div style="margin-bottom: 10px;">
+          <b>${a.name}</b> - ₹${a.price}
+          <button onclick="buy('${a.id}')">Buy</button>
+          <button onclick="sell('${a.id}')">Sell</button>
+        </div>
+      `;
     });
+  }
+
+  async function buy(asset_id) {
+    await trade(asset_id, "BUY");
+  }
+
+  async function sell(asset_id) {
+    await trade(asset_id, "SELL");
+  }
+
+  async function trade(asset_id, type) {
+    const res = await fetch(
+      "https://qajjrccoqyjulrjphdwm.functions.supabase.co/trade",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhampyY2NvcXlqdWxyanBoZHdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzMDkwMzksImV4cCI6MjA5MTg4NTAzOX0.7xCxXBfxit2tkLCRdFqFX6LPwyR1k5kh26cJQdxpeBA"
+        },
+        body: JSON.stringify({
+          user_id: USER_ID,
+          asset_id,
+          type,
+          quantity: 1
+        })
+      }
+    );
+
+    const data = await res.json();
+    console.log(data);
+
+    alert(JSON.stringify(data));
   }
 
   // REALTIME
@@ -36,13 +76,13 @@
       event: '*',
       schema: 'public',
       table: 'assets'
-    }, payload => {
-      console.log("Realtime update:", payload);
+    }, () => {
       loadAssets();
     })
     .subscribe();
 
   loadAssets();
 </script>
+
 </body>
 </html>

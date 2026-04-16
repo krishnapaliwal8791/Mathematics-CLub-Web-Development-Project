@@ -18,6 +18,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  let userHoldings = {};
   const client = window.supabase.createClient(
     "https://qajjrccoqyjulrjphdwm.supabase.co",
     "sb_publishable_FwKur31N-CLqlJkEH3ocWg_jdxqnhAy"
@@ -31,19 +32,23 @@
   }
 
   function render(data) {
-    const div = document.getElementById("assets");
-    div.innerHTML = "";
+  const div = document.getElementById("assets");
+  div.innerHTML = "";
 
-    data.forEach(a => {
-      div.innerHTML += `
-        <div style="margin-bottom: 10px;">
-          <b>${a.name}</b> - ₹${a.price}
-          <button onclick="buy('${a.id}')">Buy</button>
-          <button onclick="sell('${a.id}')">Sell</button>
-        </div>
-      `;
-    });
-  }
+  data.forEach(a => {
+    const holding = userHoldings[a.id] || 0;
+
+    div.innerHTML += `
+      <div style="margin-bottom: 10px;">
+        <b>${a.name}</b> - ₹${a.price}
+        <button onclick="buy('${a.id}')">Buy</button>
+        <button onclick="sell('${a.id}')" ${holding <= 0 ? "disabled" : ""}>
+          Sell
+        </button>
+      </div>
+    `;
+  });
+}
 
   async function buy(asset_id) {
     await trade(asset_id, "BUY");
@@ -53,30 +58,37 @@
     await trade(asset_id, "SELL");
   }
 
-  async function trade(asset_id, type) {
-    const res = await fetch(
-      "https://qajjrccoqyjulrjphdwm.functions.supabase.co/trade",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhampyY2NvcXlqdWxyanBoZHdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzMDkwMzksImV4cCI6MjA5MTg4NTAzOX0.7xCxXBfxit2tkLCRdFqFX6LPwyR1k5kh26cJQdxpeBA"
-        },
-        body: JSON.stringify({
-          user_id: USER_ID,
-          asset_id,
-          type,
-          quantity: 1
-        })
-      }
-    );
+  let isTrading = false;
 
-    const data = await res.json();
-    console.log(data);
+async function trade(asset_id, type) {
+  if (isTrading) return;
 
-    alert(JSON.stringify(data));
-    loadUserData();
-  }
+  isTrading = true;
+
+  const res = await fetch(
+    "https://qajjrccoqyjulrjphdwm.functions.supabase.co/trade",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer YOUR_LEGACY_ANON_KEY"
+      },
+      body: JSON.stringify({
+        user_id: USER_ID,
+        asset_id,
+        type,
+        quantity: 1
+      })
+    }
+  );
+
+  const data = await res.json();
+  alert(JSON.stringify(data));
+
+  await loadUserData();
+
+  isTrading = false;
+}
 
   // REALTIME
   client
@@ -102,15 +114,22 @@
 
   const { data: holdings } = await client
     .from("holdings")
-    .select("quantity, assets(name)")
+    .select("asset_id, quantity")
     .eq("user_id", USER_ID);
+
+  userHoldings = {};
+  holdings.forEach(h => {
+    userHoldings[h.asset_id] = h.quantity;
+  });
 
   const div = document.getElementById("holdings");
   div.innerHTML = "";
 
   holdings.forEach(h => {
-    div.innerHTML += `<p>${h.assets.name}: ${h.quantity}</p>`;
+    div.innerHTML += `<p>${h.asset_id}: ${h.quantity}</p>`;
   });
+
+  loadAssets(); // refresh buttons
 }
 </script>
 

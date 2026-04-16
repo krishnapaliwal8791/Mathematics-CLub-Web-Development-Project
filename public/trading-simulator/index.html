@@ -129,12 +129,14 @@ client
     'postgres_changes',
     { event: '*', schema: 'public', table: 'assets' },
     async () => {
+      // ALWAYS refresh user + assets together
+      await loadUserData();
+
       const { data } = await client.from("assets").select("*");
       render(data);
     }
   )
   .subscribe();
-
 client
   .channel('holdings-channel')
   .on(

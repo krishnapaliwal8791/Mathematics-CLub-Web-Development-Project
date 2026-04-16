@@ -135,6 +135,27 @@ client
   )
   .subscribe();
 
+client
+  .channel('holdings-channel')
+  .on(
+    'postgres_changes',
+    { event: '*', schema: 'public', table: 'holdings' },
+    async () => {
+      await loadUserData();
+    }
+  )
+  .subscribe();
+
+client
+  .channel('users-channel')
+  .on(
+    'postgres_changes',
+    { event: '*', schema: 'public', table: 'users' },
+    async () => {
+      await loadUserData();
+    }
+  )
+  .subscribe();
 // -------------------- INIT --------------------
 async function init() {
   await loadUserData();

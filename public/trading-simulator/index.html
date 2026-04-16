@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trade Matrix</title>
+</head>
+<body>
+
+<h2>Assets</h2>
+<div id="assets"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const client = window.supabase.createClient(
+    "https://qajjrccoqyjulrjphdwm.supabase.co",
+    "sb_publishable_FwKur31N-CLqlJkEH3ocWg_jdxqnhAy"
+  );
+
+  async function loadAssets() {
+    const { data } = await client.from("assets").select("*");
+    render(data);
+  }
+
+  function render(data) {
+    const div = document.getElementById("assets");
+    div.innerHTML = "";
+
+    data.forEach(a => {
+      div.innerHTML += `<p>${a.name} - ₹${a.price}</p>`;
+    });
+  }
+
+  // REALTIME
+  client
+    .channel('assets-channel')
+    .on('postgres_changes', {
+      event: '*',
+      schema: 'public',
+      table: 'assets'
+    }, payload => {
+      console.log("Realtime update:", payload);
+      loadAssets();
+    })
+    .subscribe();
+
+  loadAssets();
+</script>
+</body>
+</html>

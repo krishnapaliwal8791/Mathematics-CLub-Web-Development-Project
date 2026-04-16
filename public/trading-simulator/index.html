@@ -7,30 +7,35 @@
 
 <h2>Assets</h2>
 <div id="assets"></div>
+
 <h2>Balance: ₹<span id="balance">0</span></h2>
 
 <h3>Your Holdings</h3>
 <div id="holdings"></div>
 
-
-
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  let userHoldings = {};
-  const client = window.supabase.createClient(
-    "https://qajjrccoqyjulrjphdwm.supabase.co",
-    "sb_publishable_FwKur31N-CLqlJkEH3ocWg_jdxqnhAy"
-  );
 
-  const USER_ID = "696b7fd7-aa03-4194-b731-bee754ae065b";
+const client = window.supabase.createClient(
+  "https://qajjrccoqyjulrjphdwm.supabase.co",
+  "sb_publishable_FwKur31N-CLqlJkEH3ocWg_jdxqnhAy"
+);
 
-  async function loadAssets() {
-    const { data } = await client.from("assets").select("*");
-    render(data);
-  }
+const USER_ID = "696b7fd7-aa03-4194-b731-bee754ae065b";
 
-  function render(data) {
+let userHoldings = {};
+let isTrading = false;
+
+// -------------------- LOAD ASSETS --------------------
+async function loadAssets() {
+  const { data } = await client.from("assets").select("*");
+  render(data);
+}
+
+// -------------------- RENDER --------------------
+function render(data) {
   const div = document.getElementById("assets");
   div.innerHTML = "";
 
@@ -49,15 +54,14 @@
   });
 }
 
-  async function buy(asset_id) {
-    await trade(asset_id, "BUY");
-  }
+// -------------------- TRADE --------------------
+async function buy(asset_id) {
+  await trade(asset_id, "BUY");
+}
 
-  async function sell(asset_id) {
-    await trade(asset_id, "SELL");
-  }
-
-  let isTrading = false;
+async function sell(asset_id) {
+  await trade(asset_id, "SELL");
+}
 
 async function trade(asset_id, type) {
   if (isTrading) return;
@@ -89,22 +93,8 @@ async function trade(asset_id, type) {
   isTrading = false;
 }
 
-  // REALTIME
-  client
-  .channel('assets-channel')
-  .on(
-    'postgres_changes',
-    { event: '*', schema: 'public', table: 'assets' },
-    async () => {
-      const { data } = await client.from("assets").select("*");
-      render(data); // direct render instead of loadAssets
-    }
-  )
-  .subscribe();
-
-  await loadUserData();
-await loadAssets();
-  async function loadUserData() {
+// -------------------- USER DATA --------------------
+async function loadUserData() {
   const { data: user } = await client
     .from("users")
     .select("*")
@@ -119,6 +109,7 @@ await loadAssets();
     .eq("user_id", USER_ID);
 
   userHoldings = {};
+
   holdings.forEach(h => {
     userHoldings[h.asset_id] = h.quantity;
   });
@@ -129,11 +120,28 @@ await loadAssets();
   holdings.forEach(h => {
     div.innerHTML += `<p>${h.asset_id}: ${h.quantity}</p>`;
   });
-
-  const { data } = await client.from("assets").select("*");
-render(data);
 }
+
+// -------------------- REALTIME --------------------
+client
+  .channel('assets-channel')
+  .on(
+    'postgres_changes',
+    { event: '*', schema: 'public', table: 'assets' },
+    async () => {
+      const { data } = await client.from("assets").select("*");
+      render(data);
+    }
+  )
+  .subscribe();
+
+// -------------------- INIT --------------------
+async function init() {
+  await loadUserData();
+  await loadAssets();
+}
+
+init();
+
 </script>
-
-
 </html>

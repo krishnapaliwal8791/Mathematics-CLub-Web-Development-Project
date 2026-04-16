@@ -12,8 +12,7 @@
 <h3>Your Holdings</h3>
 <div id="holdings"></div>
 
-<h2>Assets</h2>
-<div id="assets"></div>
+
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -92,17 +91,19 @@ async function trade(asset_id, type) {
 
   // REALTIME
   client
-    .channel('assets-channel')
-    .on('postgres_changes', {
-      event: '*',
-      schema: 'public',
-      table: 'assets'
-    }, () => {
-      loadAssets();
-    })
-    .subscribe();
+  .channel('assets-channel')
+  .on(
+    'postgres_changes',
+    { event: '*', schema: 'public', table: 'assets' },
+    async () => {
+      const { data } = await client.from("assets").select("*");
+      render(data); // direct render instead of loadAssets
+    }
+  )
+  .subscribe();
 
-  loadAssets();
+  await loadUserData();
+await loadAssets();
   async function loadUserData() {
   const { data: user } = await client
     .from("users")
@@ -129,7 +130,8 @@ async function trade(asset_id, type) {
     div.innerHTML += `<p>${h.asset_id}: ${h.quantity}</p>`;
   });
 
-  loadAssets(); // refresh buttons
+  const { data } = await client.from("assets").select("*");
+render(data);
 }
 </script>
 

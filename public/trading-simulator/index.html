@@ -7,7 +7,15 @@
 
 <h2>Assets</h2>
 <div id="assets"></div>
+<h2>Balance: ₹<span id="balance">0</span></h2>
 
+<h3>Your Holdings</h3>
+<div id="holdings"></div>
+
+<h2>Assets</h2>
+<div id="assets"></div>
+
+</body>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const client = window.supabase.createClient(
@@ -67,6 +75,7 @@
     console.log(data);
 
     alert(JSON.stringify(data));
+    loadUserData();
   }
 
   // REALTIME
@@ -82,7 +91,28 @@
     .subscribe();
 
   loadAssets();
+  async function loadUserData() {
+  const { data: user } = await client
+    .from("users")
+    .select("*")
+    .eq("id", USER_ID)
+    .single();
+
+  document.getElementById("balance").innerText = user.balance;
+
+  const { data: holdings } = await client
+    .from("holdings")
+    .select("quantity, assets(name)")
+    .eq("user_id", USER_ID);
+
+  const div = document.getElementById("holdings");
+  div.innerHTML = "";
+
+  holdings.forEach(h => {
+    div.innerHTML += `<p>${h.assets.name}: ${h.quantity}</p>`;
+  });
+}
 </script>
 
-</body>
+
 </html>

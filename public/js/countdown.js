@@ -1,4 +1,4 @@
-const eventDate = new Date("March 27, 2026 9:00:00").getTime();
+const eventDate = new Date(Date.now + 720000).getTime();
 
 setInterval(function(){
 

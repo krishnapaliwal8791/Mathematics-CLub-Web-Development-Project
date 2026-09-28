@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="relative flex items-center justify-center p-1 rounded-full border border-accent/30 bg-[#0B1020] shadow-[0_0_15px_rgba(20,184,166,0.15)]">
-                <img src="/logo.png" alt="Mathematics Club Logo" className="h-10 w-10 object-contain" />
+                <img src="/logo.webp" alt="Mathematics Club Logo" className="h-10 w-10 object-contain" />
               </div>
               <div>
                 <h3 className="font-bold text-xl text-white tracking-tight">Mathematics Club</h3>

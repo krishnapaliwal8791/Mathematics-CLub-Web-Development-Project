@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/banner.png")' }}
+        style={{ backgroundImage: 'url("/banner.webp")' }}
       >
         <div className="absolute inset-0 bg-[#0B1020]/85"></div>
       </div>
@@ -73,7 +73,7 @@ export default function Hero() {
             
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full"></div>
-              <img src="/logo.png" alt="Mathematics Club Logo" className="relative z-10 w-full h-full object-contain drop-shadow-2xl" />
+              <img src="/logo.webp" alt="Mathematics Club Logo" className="relative z-10 w-full h-full object-contain drop-shadow-2xl" />
             </div>
           </div>
           

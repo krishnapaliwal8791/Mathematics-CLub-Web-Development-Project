@@ -50,7 +50,7 @@ export default function Navbar() {
             {/* Branding */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 cursor-pointer" onClick={(e) => handleNavClick(e as any, 'home')}>
               <div className="relative flex items-center justify-center p-0.5 rounded-full border-[0.5px] border-accent/40 bg-[#0B1020] shadow-[0_0_8px_rgba(20,184,166,0.25)]">
-                <img src="/logo.png" alt="Mathematics Club Logo" className="h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain" />
+                <img src="/logo.webp" alt="Mathematics Club Logo" className="h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain" />
               </div>
               <div className="flex flex-col justify-center">
                 <span className="font-bold text-[15px] sm:text-xl tracking-tight leading-tight text-white whitespace-nowrap">Mathematics Club</span>

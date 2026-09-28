@@ -36,7 +36,7 @@ export default function Gallery() {
         folderImages[eventId] = { cover: '', images: [] };
       }
       
-      // Step 5: Ensure cover.png is NEVER added to the gallery image array
+      // Step 5: Ensure cover.webp is NEVER added to the gallery image array
       if (filename.startsWith('cover.')) {
         folderImages[eventId].cover = url;
       } else {
@@ -58,14 +58,14 @@ export default function Gallery() {
 
       let { cover, images } = data;
       
-      // Step 6: If cover.png is missing, use first gallery image as fallback cover.
+      // Step 6: If cover.webp is missing, use first gallery image as fallback cover.
       if (!cover && images.length > 0) {
         cover = images[0];
       }
 
       // Step 7: If metadata exists but no images exist (or no cover if 0 images): Hide that event.
       // Since cover could be the only image, but we need gallery images too. 
-      // Rule: "1.png, 2.png... -> gallery images"
+      // Rule: "1.webp, 2.webp... -> gallery images"
       if (images.length === 0) {
         continue;
       }

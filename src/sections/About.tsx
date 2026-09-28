@@ -52,7 +52,7 @@ export default function About() {
             
             <div className="bg-[#111827]/80 backdrop-blur-sm p-6 rounded-xl border border-gray-800/60 hover:border-accent/30 transition-colors relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="text-accent text-4xl mb-4 font-bold font-mono">200<span className="text-2xl opacity-70">+</span></div>
+              <div className="text-accent text-4xl mb-4 font-bold font-mono">50<span className="text-2xl opacity-70">+</span></div>
               <div className="text-white font-medium mb-1">Active Members</div>
               <div className="text-text-secondary text-sm">From various engineering disciplines</div>
             </div>

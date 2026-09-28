@@ -131,7 +131,7 @@ export default function RecruitmentPage() {
                 Thank you for applying to the Mathematics Club.
               </p>
               <a 
-                href="https://chat.whatsapp.com/REPLACE_ME" 
+                href="https://chat.whatsapp.com/L0dMKzFcDsgIsWhCa9Xsuj" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block w-full bg-primary hover:bg-blue-600 text-white text-lg font-medium py-4 px-6 rounded-lg transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] transform hover:-translate-y-0.5"

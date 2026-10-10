@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { config } from '../config';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,7 +51,7 @@ export default function Navbar() {
             {/* Branding */}
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 cursor-pointer" onClick={(e) => handleNavClick(e as any, 'home')}>
               <div className="relative flex items-center justify-center p-0.5 rounded-full border-[0.5px] border-accent/40 bg-[#0B1020] shadow-[0_0_8px_rgba(20,184,166,0.25)]">
-                <img src="/logo.webp" alt="Mathematics Club Logo" className="h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain" />
+                <img src="/logo.png" alt="Mathematics Club Logo" className="h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain" />
               </div>
               <div className="flex flex-col justify-center">
                 <span className="font-bold text-[15px] sm:text-xl tracking-tight leading-tight text-white whitespace-nowrap">Mathematics Club</span>
@@ -76,13 +77,23 @@ export default function Navbar() {
             
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center justify-end flex-shrink-0">
-              <a 
-                href="#recruitment" 
-                onClick={(e) => handleNavClick(e, 'recruitment')}
-                className="bg-primary hover:bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium transition-colors shadow-[0_0_15px_rgba(37,99,235,0.3)]"
-              >
-                Join Us
-              </a>
+              {config.RECRUITMENT_TASK_URL ? (
+                <a 
+                  href={config.RECRUITMENT_TASK_URL} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary hover:bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-medium transition-colors shadow-[0_0_15px_rgba(37,99,235,0.3)]"
+                >
+                  Submit Recruitment Task
+                </a>
+              ) : (
+                <button 
+                  disabled
+                  className="bg-primary/50 text-white/50 px-5 py-2 rounded-md text-sm font-medium transition-colors shadow-none cursor-not-allowed"
+                >
+                  Submit Recruitment Task
+                </button>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -142,13 +153,23 @@ export default function Navbar() {
         </div>
         
         <div className="p-4 border-t border-gray-800/60 flex-shrink-0 mb-4">
-          <a
-            href="#recruitment"
-            onClick={(e) => handleNavClick(e, 'recruitment')}
-            className="w-full flex justify-center items-center bg-primary hover:bg-blue-600 text-white px-4 py-3.5 rounded-lg text-base font-semibold transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]"
-          >
-            Join Us
-          </a>
+          {config.RECRUITMENT_TASK_URL ? (
+            <a
+              href={config.RECRUITMENT_TASK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex justify-center items-center bg-primary hover:bg-blue-600 text-white px-4 py-3.5 rounded-lg text-base font-semibold transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]"
+            >
+              Submit Recruitment Task
+            </a>
+          ) : (
+            <button
+              disabled
+              className="w-full flex justify-center items-center bg-primary/50 text-white/50 px-4 py-3.5 rounded-lg text-base font-semibold transition-all shadow-none cursor-not-allowed"
+            >
+              Submit Recruitment Task
+            </button>
+          )}
         </div>
       </div>
     </>

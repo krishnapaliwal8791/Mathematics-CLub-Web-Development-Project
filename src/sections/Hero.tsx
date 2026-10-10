@@ -1,3 +1,5 @@
+import { config } from '../config';
+
 export default function Hero() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -12,7 +14,7 @@ export default function Hero() {
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/banner.webp")' }}
+        style={{ backgroundImage: 'url("/banner.png")' }}
       >
         <div className="absolute inset-0 bg-[#0B1020]/85"></div>
       </div>
@@ -56,13 +58,23 @@ export default function Hero() {
               >
                 Explore Club
               </a>
-              <a 
-                href="#recruitment" 
-                onClick={(e) => handleNavClick(e, 'recruitment')}
-                className="bg-transparent border border-gray-600 hover:border-white text-white px-8 py-3.5 rounded-md font-medium transition-colors text-lg text-center hover:bg-white/5"
-              >
-                Join Recruitment
-              </a>
+              {config.RECRUITMENT_TASK_URL ? (
+                <a 
+                  href={config.RECRUITMENT_TASK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent border border-gray-600 hover:border-white text-white px-8 py-3.5 rounded-md font-medium transition-colors text-lg text-center hover:bg-white/5"
+                >
+                  Submit Recruitment Task
+                </a>
+              ) : (
+                <button 
+                  disabled
+                  className="bg-transparent border border-gray-600/50 text-white/50 px-8 py-3.5 rounded-md font-medium transition-colors text-lg text-center cursor-not-allowed"
+                >
+                  Submit Recruitment Task
+                </button>
+              )}
             </div>
           </div>
           
@@ -73,7 +85,7 @@ export default function Hero() {
             
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full"></div>
-              <img src="/logo.webp" alt="Mathematics Club Logo" className="relative z-10 w-full h-full object-contain drop-shadow-2xl" />
+              <img src="/logo.png" alt="Mathematics Club Logo" className="relative z-10 w-full h-full object-contain drop-shadow-2xl" />
             </div>
           </div>
           

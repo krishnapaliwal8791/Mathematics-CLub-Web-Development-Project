@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { config } from '../config';
 
 export default function Recruitment() {
   return (
@@ -34,12 +34,23 @@ export default function Recruitment() {
           ))}
         </div>
         
-        <Link 
-          to="/recruitment" 
-          className="inline-block bg-primary hover:bg-blue-600 text-white text-lg font-bold px-12 py-4 rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)] transition-all duration-300 transform hover:-translate-y-1"
-        >
-          Apply Now
-        </Link>
+        {config.RECRUITMENT_TASK_URL ? (
+          <a 
+            href={config.RECRUITMENT_TASK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary hover:bg-blue-600 text-white text-lg font-bold px-12 py-4 rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)] transition-all duration-300 transform hover:-translate-y-1"
+          >
+            Submit Recruitment Task
+          </a>
+        ) : (
+          <button 
+            disabled
+            className="inline-block bg-primary/50 text-white/50 text-lg font-bold px-12 py-4 rounded-lg shadow-none cursor-not-allowed transition-all duration-300"
+          >
+            Submit Recruitment Task
+          </button>
+        )}
       </div>
     </section>
   );
